@@ -8,6 +8,7 @@ import {
   People,
 } from "@mui/icons-material";
 import React from "react";
+import Swal from "sweetalert2";
 
 const DashboardLayoutWrapper = ({ children }) => {
   const { user, logout, login } = useAuth();
@@ -27,7 +28,27 @@ const DashboardLayoutWrapper = ({ children }) => {
         login();
       },
       signOut: () => {
-        logout();
+        Swal.fire({
+          title: "¿Estás seguro?",
+          text: "Tu sesión se cerrará",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Sí, cerrar sesión",
+          cancelButtonText: "Cancelar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            logout();
+            Swal.fire({
+              title: "Cerrando sesión",
+              text: "Serás redirigido al inicio.",
+              timer: 1000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+            });
+          }
+        });
       },
     }),
     [logout]

@@ -1,6 +1,7 @@
 import { Email, Visibility, VisibilityOff } from "@mui/icons-material";
 import {
-    Button,
+  Box,
+  Button,
   FormControl,
   Grid2,
   IconButton,
@@ -61,92 +62,100 @@ const HomePage = () => {
   };
 
   return (
-    <Grid2
-      container
-      spacing={2}
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "500px",
+        backgroundColor: "background.default",
+      }}
     >
-      <Grid2 item xs={12}>
-        <FormControl
-          sx={{ m: 1, width: "25ch" }}
-          variant="outlined"
-          error={!!errors.email}
-        >
-          <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
-          <Controller
-            name="email"
-            control={control}
-            defaultValue=""
-            rules={{
-              required: "El email es obligatorio",
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: "Formato de email inválido",
-              },
-            }}
-            render={({ field }) => (
-              <OutlinedInput
-                {...field}
-                id="outlined-adornment-email"
-                label="Email"
-                endAdornment={
-                  <InputAdornment position="end">
-                    <Email />
-                  </InputAdornment>
-                }
-              />
-            )}
-          />
-          {errors.email && <span>{errors.email.message}</span>}
-        </FormControl>
-      </Grid2>
-
-      <Grid2 item xs={12}>
-        <FormControl
-          sx={{ m: 1, width: "25ch" }}
-          variant="outlined"
-          error={!!errors.password}
-        >
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <Controller
-            name="password"
-            control={control}
-            defaultValue=""
-            rules={{ required: "La contraseña es obligatoria" }}
-            render={({ field }) => (
-              <OutlinedInput
-                {...field}
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-            )}
-          />
-          {errors.password && <span>{errors.password.message}</span>}
-        </FormControl>
-      </Grid2>
-
-      {errors.server && (
+      <Grid2
+        container
+        spacing={2}
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Grid2 item xs={12}>
-          <span>{errors.server.message}</span>
+          <FormControl
+            sx={{ m: 1, width: "25ch" }}
+            variant="outlined"
+            error={!!errors.email}
+          >
+            <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+            <Controller
+              name="email"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: "El email es obligatorio",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Formato de email inválido",
+                },
+              }}
+              render={({ field }) => (
+                <OutlinedInput
+                  {...field}
+                  id="outlined-adornment-email"
+                  label="Email"
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <Email />
+                    </InputAdornment>
+                  }
+                />
+              )}
+            />
+            {errors.email && <span>{errors.email.message}</span>}
+          </FormControl>
         </Grid2>
-      )}
 
-      <Grid2 item xs={12}>
+        <Grid2 item xs={12}>
+          <FormControl
+            sx={{ m: 1, width: "25ch" }}
+            variant="outlined"
+            error={!!errors.password}
+          >
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              rules={{ required: "La contraseña es obligatoria" }}
+              render={({ field }) => (
+                <OutlinedInput
+                  {...field}
+                  id="outlined-adornment-password"
+                  type={showPassword ? "text" : "password"}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password"
+                />
+              )}
+            />
+            {errors.password && <span>{errors.password.message}</span>}
+          </FormControl>
+        </Grid2>
+
+        {errors.server && (
+          <Grid2 item xs={12}>
+            <span>{errors.server.message}</span>
+          </Grid2>
+        )}
+
         <Button
           variant="contained"
           color="primary"
@@ -156,7 +165,7 @@ const HomePage = () => {
           Iniciar sesión
         </Button>
       </Grid2>
-    </Grid2>
+    </Box>
   );
 };
 
