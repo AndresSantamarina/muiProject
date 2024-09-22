@@ -4,29 +4,36 @@ import Error404 from "../pages/Error404";
 import ProtectedRoutes from "./ProtectedRoutes";
 import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
+import DashboardLayoutWrapper from "../components/DashboardLayoutWrapper";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Rutas publicas */}
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="*" element={<Error404 />}></Route>
+        {/* Rutas protegidas con layout */}
         <Route
           path="admin/*"
           element={
-            <ProtectedRoutes>
-              <AdminRoutes />
-            </ProtectedRoutes>
+            <DashboardLayoutWrapper>
+              <ProtectedRoutes>
+                <AdminRoutes />
+              </ProtectedRoutes>
+            </DashboardLayoutWrapper>
           }
         ></Route>
         <Route
           path="user/*"
           element={
-            <ProtectedRoutes>
-              <UserRoutes />
-            </ProtectedRoutes>
+            <DashboardLayoutWrapper>
+              <ProtectedRoutes>
+                <UserRoutes />
+              </ProtectedRoutes>
+            </DashboardLayoutWrapper>
           }
         ></Route>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="*" element={<Error404 />}></Route>
       </Routes>
     </BrowserRouter>
   );
