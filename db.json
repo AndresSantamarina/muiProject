@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "apellido": "Santamarina",
+      "nombre": "Andrés",
+      "email": "andres@gmail.com",
+      "password": "123456",
+      "passwordConfirm": "123456",
+      "rol": "Admin",
+      "id": "1"
+    },
+    {
+      "apellido": "Santamarina",
+      "nombre": "Eduardo",
+      "dni": "41275066",
+      "telefono": "3865608565",
+      "direccion": "Amancay 1683",
+      "email": "eduardo@gmail.com",
+      "password": "123456",
+      "passwordConfirm": "123456",
+      "rol": "User",
+      "id": "2"
+    }
+  ]
+}
