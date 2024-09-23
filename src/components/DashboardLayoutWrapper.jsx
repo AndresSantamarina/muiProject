@@ -9,6 +9,7 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const DashboardLayoutWrapper = ({ children }) => {
   const { user, logout, login } = useAuth();
@@ -81,14 +82,27 @@ const DashboardLayoutWrapper = ({ children }) => {
     return [];
   };
 
+  const homeRoute = user?.rol === "Admin" ? "/admin" : "/user";
+
   return (
     <AppProvider
       session={session}
       authentication={authentication}
       navigation={getNavigation()}
       branding={{
-        logo: <img src="https://mui.com/static/logo.png" alt="MUI logo" />,
-        title: "MUI",
+        logo: (
+          <Link to={homeRoute}>
+            <img src="https://mui.com/static/logo.png" alt="MUI logo" />
+          </Link>
+        ),
+        title: (
+          <Link
+            to={homeRoute}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            MUI
+          </Link>
+        ),
       }}
       // theme={demoTheme}
     >
