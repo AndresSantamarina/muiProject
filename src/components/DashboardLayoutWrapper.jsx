@@ -58,7 +58,7 @@ const DashboardLayoutWrapper = ({ children }) => {
   const getNavigation = () => {
     if (user?.rol === "Admin") {
       return [
-        { segment: "admin", title: "Inicio", icon: <Description /> },
+        { segment: "admin", title: "Perfil", icon: <Description /> },
         { segment: "admin/users", title: "Usuarios", icon: <People /> },
         {
           segment: "admin/routines",
